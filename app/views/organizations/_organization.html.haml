@@ -1,6 +1,6 @@
 .organization
   .rank #{rank}位
-  = link_to organization.name, organization
+  = link_to organization.name, organization.qiita_page, target: "_blank"
   .stock-count
     = fa_icon 'folder-o'
     = number_with_delimiter organization.stock_count
