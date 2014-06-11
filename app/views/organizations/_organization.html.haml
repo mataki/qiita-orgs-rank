@@ -1,0 +1,9 @@
+.organization
+  .rank #{rank}位
+  = link_to organization.name, organization
+  .stock-count
+    = fa_icon 'folder-o'
+    = organization.stock_count
+  .post-count
+    = fa_icon 'pencil-square-o'
+    = organization.post_count

@@ -1,0 +1,3 @@
+.organizations
+  - @organizations.each.with_index do |organization, index|
+    = render organization, rank: (index+1)
