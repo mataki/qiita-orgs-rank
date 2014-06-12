@@ -1,6 +1,13 @@
+- rank ||= nil
 .organization
-  .rank #{rank}位
-  = link_to organization.name, organization.qiita_page, target: "_blank"
+  - if rank
+    .rank #{rank}位
+  .name
+    = link_to organization do
+      = organization.name
+    = link_to organization.qiita_page, class: "to-qiita", target: "_blank" do
+      = fa_icon "share"
+      Qiita
   .stock-count
     = fa_icon 'folder-o'
     = number_with_delimiter organization.stock_count

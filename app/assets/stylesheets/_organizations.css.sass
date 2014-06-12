@@ -1,26 +1,43 @@
-.organizations
+.organization-show
+  margin: 30px 0
+  .name, .rank
+    font-size: 30px
+
+.organizations, .members
   margin: 40px 0
-  .organization:nth-child(1)
+  > div:nth-child(1)
     margin: 50px 0
-    a, .rank
+    .name, .rank
       font-size: 50px
-  .organization:nth-child(2)
+  > div:nth-child(2)
     margin: 36px 0
-    a, .rank
+    .name, .rank
       font-size: 36px
-  .organization:nth-child(3)
+  > div:nth-child(3)
     margin: 24px 0
-    a, .rank
+    .name, .rank
       font-size: 24px
 
-.organization
+.to-qiita
+  font-size: 12px
+  background: #59BB0C
+  color: white
+  padding: 4px
+  font-family: 'Varela Round', sans-serif
+  &:hover
+    color: white
+    text-decoration: none
+    background: rgba(0, 0, 0, 0.1)
+
+.organization, .member
   font-size: 16px
   margin: 16px 0
   +zurui-line-bottom
-  a
+  .name
     font-weight: bold
     display: block
     margin-left: 100px
+    word-wrap: break-word
   .rank
     font-family: 'Montserrat', sans-serif
     float: left

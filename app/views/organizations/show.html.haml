@@ -1,18 +1,6 @@
-%p#notice= notice
+.organization-show
+  = render @organization
 
-%p
-  %b Name:
-  = @organization.name
-%p
-  %b Slug:
-  = @organization.slug
-%p
-  %b Post count:
-  = @organization.post_count
-%p
-  %b Stock count:
-  = @organization.stock_count
-
-= link_to 'Edit', edit_organization_path(@organization)
-\|
-= link_to 'Back', organizations_path
+.members
+  - @organization.members.order('stock_count desc').each.with_index do |member, index|
+    = render member, rank: (index+1)
