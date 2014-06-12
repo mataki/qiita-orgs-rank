@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20140610121617) do
     t.integer  "organization_id"
     t.string   "name"
     t.string   "slug"
-    t.string   "post_count"
-    t.string   "stock_count"
+    t.integer  "post_count"
+    t.integer  "stock_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
