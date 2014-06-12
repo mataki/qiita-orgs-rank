@@ -26,6 +26,8 @@ class Organization < ActiveRecord::Base
     self.post_count = org_page.search('.organization-stats li:nth-child(1) .count').text.to_i
     self.stock_count = org_page.search('.organization-stats li:nth-child(2) .count').text.to_i
     self.save!
+  rescue => e
+    logger.info "[Error] fetch: #{self.id}"
   end
 
   def fetch_members
@@ -37,5 +39,7 @@ class Organization < ActiveRecord::Base
       member.save!
       member
     end
+  rescue => e
+    logger.info "[Error] fetch_members: #{self.id}"
   end
 end
