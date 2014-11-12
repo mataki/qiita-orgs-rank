@@ -11,7 +11,7 @@ class Organization < ActiveRecord::Base
 
     def fetch_organizations
       index_page = Mechanize.new.get('http://qiita.com/organizations')
-      index_page.search('.organization-list h2 a').map do |a|
+      index_page.search('.organizationsList h2 a').map do |a|
         Organization.find_or_create_by!(slug: a.attributes["href"].value.match(/\/organizations\/(.*)/)[1], name: a.text)
       end
     end
@@ -23,8 +23,8 @@ class Organization < ActiveRecord::Base
 
   def fetch
     org_page = Mechanize.new.get(qiita_page)
-    self.post_count = org_page.search('.organization-stats li:nth-child(1) .count').text.to_i
-    self.stock_count = org_page.search('.organization-stats li:nth-child(2) .count').text.to_i
+    self.post_count = org_page.search('.organizationStatsSummary li:nth-child(1) .organizationStatsSummary_count').text.to_i
+    self.stock_count = org_page.search('.organizationStatsSummary li:nth-child(2) .organizationStatsSummary_count').text.to_i
     self.save!
   rescue => e
     logger.info "[Error] fetch: #{self.id}"
