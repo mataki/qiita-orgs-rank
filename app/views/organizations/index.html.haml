@@ -1,3 +1,7 @@
 .organizations
   - @organizations.each.with_index do |organization, index|
     = render organization, rank: (index+1)
+
+.last-updated-at
+  最終更新時間:
+  = Organization.maximum(:updated_at)
