@@ -32,10 +32,10 @@ class Organization < ActiveRecord::Base
 
   def fetch_members
     member_page = Mechanize.new.get("http://qiita.com/organizations/#{self.slug}/members")
-    member_page.search('.organization-members-list .row').map do |mdom|
-      a = mdom.search("h3 a")
+    member_page.search('.organizationMemberList_item').map do |mdom|
+      a = mdom.search("a")
       member = self.members.find_or_initialize_by(slug: a.text)
-      member.post_count, member.stock_count = mdom.search('p').text.scan(/\d+/)
+      member.post_count, member.stock_count = mdom.search('.organizationMemberList_memberStats').text.scan(/\d+/)
       member.save!
       member
     end
